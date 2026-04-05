@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy BOY'S day</title>
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    background: linear-gradient(135deg,#000000,#005ccd, #5500ff,#000000);
+    padding:50px;
+    min-height: 100vh;
+
+}
+.card{
+    margin-top:150px;
+    padding:20px;
+    background:white;
+    border-radius:15px;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+input,button{
+    padding:10px;
+    font-size:20px;
+    margin:10px;
+
+}
+</style>
+</head>
+
+<body>
+
+<h2>Nhập ngày sinh của bạn</h2>
+
+<input type="date" id="birthday">
+<button onclick="showCard()">Xem thiệp</button>
+
+<div class="card" id="card"></div>
+
+<script>
+
+function showCard(){
+    let birthday = document.getElementById("birthday").value;
+let card = document.getElementById("card");
+
+let date = new Date(birthday);
+let day = String(date.getDate()).padStart(2, '0');
+let month = String(date.getMonth() + 1).padStart(2, '0');
+let year = date.getFullYear();
+
+let newFormat = day + "-" + month + "-" + year;
+if(!birthday){
+    alert("Vui lòng chọn ngày sinh!");
+    return;
+}
+let people={
+"08-06-2007":{
+name:"Thanh Danh",
+message:""
+},
+"27-02-2007":{
+name:"Nhật Minh ",
+message:" "
+},
+"08-12-2007":{
+name:"Hoài Đức",
+message:""
+},
+"23-11-2007":{
+name:"Bảo Duy",
+message:""
+},
+"23-10-2007":{
+name:"Anh Khoa",
+message:""
+},
+"07-01-2007":{
+name:"Quân Tiến",
+message:""
+},
+"11-06-1997":{
+name:"Thiện Nhân",
+message:""
+},
+"25-12-2007":{
+name:"Anh Khôi",
+message:""
+},
+"02-06-2007":{
+name:"Gia Sang",
+message:""
+},
+"23-12-2007":{
+name:"Kim Hùng",
+message:""
+},
+"12-11-2007":{
+name:"Sĩ Nguyên",
+message:""
+},
+"06-06-2006":{
+name:"Kha Bảo",
+message:""
+},
+"15-12-2007":{
+name:"Minh Thế",
+message:""
+},
+"10-11-2007":{
+name:"Đăng Khôi",
+message:""
+},
+"01-09-2007":{
+name:"Minh Đức",
+message:""
+},
+"29-05-2007":{
+name:"Quang Hanh",
+message:""
+},
+"17-06-2007":{
+name:"Bảo Định",
+message:""
+},
+"03-10-2007":{
+name:"Khánh Hưng",
+message:""
+}
+};
+
+
+if(people[newFormat]){
+    card.style.display="block";
+    card.innerHTML="<h3>Thiệp dành cho "+people[newFormat].name+"</h3><p>"+people[newFormat].message+"</p>";
+}else{
+    card.style.display="block";
+    card.innerHTML="<h3>Không tìm thấy thiệp</h3>";
+}
+}
+
+</script>
+
+</body>
+</html>
